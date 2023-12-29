@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    tools {
+        mvn 'maven3.9'
+    }
 
     stages {
         stage('Hello') {
@@ -7,6 +10,9 @@ pipeline {
                 echo 'Hello World'
                 echo 'This is the first pipeline for this server'
             }
+        }
+        stage('Build') {
+            sh mvn package
         }
     }
 }
