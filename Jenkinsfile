@@ -5,16 +5,20 @@ pipeline {
     }
 
     stages {
-        stage('Hello') {
+        stage('SCM') {
             steps {
-                echo 'Hello World'
-                echo 'This is the first pipeline for this server'
+                git url: 'https://github.com/georgeebeh/spring-petclinic.git'
             }
-        }
-        stage('Build') {
-           steps {
-                sh "mvn package"
-            }        
+        } 
+        stage('build && SonarQube analysis') {
+            steps {
+                withSonarQubeEnv('My SonarQube Server') {
+                    // Optionally use a Maven environment you've configured already
+                    withMaven(maven:'Maven 3.9') {
+                        sh 'mvn clean package sonar:sonar'
+                    }
+                }
+            }
         }
     }
 }
