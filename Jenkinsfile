@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('SonarQube analysis 1') {
             steps {
-                sh 'mvn clean package sonar:sonar'
+                sh 'mvn clean package sonar:sonar -Dsonar.token=SONAR_TOKEN'
             }
         }
         /*stage('build && SonarQube analysis') {
