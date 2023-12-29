@@ -5,11 +5,11 @@ pipeline {
     }
 
     stages {
-        stage('SCM') {
+        /*stage('SCM') {
             steps {
                 git url: 'https://github.com/georgeebeh/spring-petclinic.git'
             }
-        } 
+        } */
         stage('build && SonarQube analysis') {
             steps {
                 //withSonarQubeEnv('My SonarQube Server') {
