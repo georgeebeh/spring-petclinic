@@ -5,12 +5,12 @@ pipeline {
     }
 
     stages {
-        /*stage('SCM') {
+        stage('SonarQube analysis 1') {
             steps {
-                git url: 'https://github.com/georgeebeh/spring-petclinic.git'
+                sh 'mvn clean package sonar:sonar'
             }
-        } */
-        stage('build && SonarQube analysis') {
+        }
+        /*stage('build && SonarQube analysis') {
             steps {
                  withSonarQubeEnv('Sonar Scanner') {
                     // Optionally use a Maven environment you've configured already
@@ -19,6 +19,6 @@ pipeline {
                     }
                 }
             }
-        }
+        }*/
     }
 }
