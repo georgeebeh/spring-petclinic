@@ -12,7 +12,9 @@ pipeline {
             }
         }
         stage('Build') {
-            sh mvn package
+           steps {
+                sh mvn package
+            }        
         }
     }
 }
